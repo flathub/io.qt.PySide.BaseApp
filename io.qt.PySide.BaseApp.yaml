@@ -13,13 +13,15 @@ build-options:
   append-ld-library-path: /usr/lib/sdk/llvm16/lib
   env:
     LLVM_INSTALL_DIR: /usr/lib/sdk/llvm16
+    SHIBOKEN_DEBUG_LEVEL: 'full'
 modules:
   - python3-requirements.json
   - name: pyside-setup
     buildsystem: simple
     build-commands:
       - python3 setup.py build --qtpaths=/usr/bin/qtpaths --ignore-git --parallel=8
-        --log-level=verbose --no-qt-tools --shiboken-force-process-system-headers
+        --log-level=verbose --no-qt-tools --flatpak
+      - cat /run/build/pyside-setup/build/qfp-py3.11-qt6.7.2-64bit-release/build/pyside6/PySide6/QtPdf/mjb_rejected_classes.log
       - python3 create_wheels.py --build-dir ./build/qfp-*-release
       - pip install ./dist/*.whl --prefix=${FLATPAK_DEST}
     sources:
@@ -28,6 +30,8 @@ modules:
         tag: "6.7.2"
       - type: patch
         path: shiboken_force_process_system_headers.patch
+      - type: patch
+        path: flatpak_option.patch
   - name: polish
     buildsystem: simple
     build-commands:
