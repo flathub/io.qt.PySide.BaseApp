@@ -30,8 +30,7 @@ index cff6df95e..27ee33305 100644
 -- 
 2.34.1
 
-
-From 3ff86e67a97ddca53df2732846112f3fe783d2c2 Mon Sep 17 00:00:00 2001
+From b9dad02a19a084c00fed88600cd67f3cff614bb2 Mon Sep 17 00:00:00 2001
 From: Shyamnath Premnadh <Shyamnath.Premnadh@qt.io>
 Date: Fri, 26 Jul 2024 10:50:53 +0200
 Subject: [PATCH 2/3] PySide Build: Add an option to provide extra include
@@ -46,25 +45,21 @@ Subject: [PATCH 2/3] PySide Build: Add an option to provide extra include
 Pick-to: 6.7
 Change-Id: Ibd4c9702a741d8047ccaf53d84a1c97550d78ffe
 ---
- build_scripts/main.py                     |  9 +++++++++
+ build_scripts/main.py                     |  5 +++++
  build_scripts/options.py                  |  8 +++++++-
  sources/pyside6/cmake/PySideHelpers.cmake | 12 +++++++++++-
- 3 files changed, 27 insertions(+), 2 deletions(-)
+ 3 files changed, 23 insertions(+), 2 deletions(-)
 
 diff --git a/build_scripts/main.py b/build_scripts/main.py
-index 506a9891f..1b5fee450 100644
+index 506a9891f..da132f0e0 100644
 --- a/build_scripts/main.py
 +++ b/build_scripts/main.py
-@@ -613,6 +613,15 @@ class PysideBuild(_build, CommandMixin, BuildInfoCollectorMixin):
+@@ -613,6 +613,11 @@ class PysideBuild(_build, CommandMixin, BuildInfoCollectorMixin):
              cmake_cmd.append("-DPYSIDE_TREAT_QT_INCLUDE_DIRS_AS_NON_SYSTEM=ON")
              log.info("Shiboken will now process system Qt headers")
  
 +        if OPTION['SHIBOKEN_EXTRA_INCLUDE_PATHS']:
-+            extra_include_paths = ''
-+            for path in OPTION['SHIBOKEN_EXTRA_INCLUDE_PATHS'].split(','):
-+                if extra_include_paths:
-+                    extra_include_paths += ';'
-+                extra_include_paths += path
++            extra_include_paths = ';'.join(OPTION['SHIBOKEN_EXTRA_INCLUDE_PATHS'].split(','))
 +            cmake_cmd.append(f"-DSHIBOKEN_FORCE_PROCESS_SYSTEM_INCLUDE_PATHS={extra_include_paths}")
 +            log.info(f"Shiboken will now process system headers from: {extra_include_paths}")
 +
@@ -130,8 +125,7 @@ index 01c438107..48502f384 100644
 -- 
 2.34.1
 
-
-From 75ff562443d2369aae2f0d3755d16cdd75a707a6 Mon Sep 17 00:00:00 2001
+From e6aabc488976156122e6a4d073b10111775a127f Mon Sep 17 00:00:00 2001
 From: Shyamnath Premnadh <Shyamnath.Premnadh@qt.io>
 Date: Fri, 26 Jul 2024 11:04:20 +0200
 Subject: [PATCH 3/3] PySide Build: Add --flatpak option
