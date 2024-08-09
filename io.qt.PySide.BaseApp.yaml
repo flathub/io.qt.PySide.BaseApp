@@ -13,13 +13,14 @@ build-options:
   append-ld-library-path: /usr/lib/sdk/llvm16/lib
   env:
     LLVM_INSTALL_DIR: /usr/lib/sdk/llvm16
+    SHIBOKEN_DEBUG_LEVEL: 'full'
 modules:
   - python3-requirements.json
   - name: pyside-setup
     buildsystem: simple
     build-commands:
       - python3 setup.py build --qtpaths=/usr/bin/qtpaths --ignore-git --parallel=8
-        --log-level=verbose --no-qt-tools --shiboken-force-process-system-headers
+        --log-level=verbose --no-qt-tools --flatpak
       - python3 create_wheels.py --build-dir ./build/qfp-*-release
       - pip install ./dist/*.whl --prefix=${FLATPAK_DEST}
     sources:
@@ -28,13 +29,11 @@ modules:
         tag: "6.7.2"
       - type: patch
         path: shiboken_force_process_system_headers.patch
-    cleanup:
-      - ${FLATPAK_DEST}/bin/pyside6-*
-      - ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/scripts
+      - type: patch
+        path: flatpak_option.patch
   - name: polish
     buildsystem: simple
     build-commands:
-      - echo "Polishing the app..."
       - mv ${FLATPAK_DEST}/cleanup-BaseApp{,-QtWebEngine}.sh
       - install -Dm755 cleanup.sh ${FLATPAK_DEST}/cleanup-BaseApp.sh
       - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/
