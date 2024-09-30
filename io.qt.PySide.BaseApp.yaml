@@ -26,11 +26,7 @@ modules:
     sources:
       - type: git
         url: "https://code.qt.io/pyside/pyside-setup.git"
-        tag: "6.7.2"
-      - type: patch
-        path: shiboken_force_process_system_headers.patch
-      - type: patch
-        path: flatpak_option.patch
+        tag: "6.7.3"
   - name: polish
     buildsystem: simple
     build-commands:
