@@ -19,6 +19,7 @@ All PySide6 modules are available with this base app, except for the following:
 | Branch     | Maintained |
 |------------|------------|
 | 6.7        | Yes        |
+| 6.8        | Yes        |
 
 > **Note:** Each branch represents the latest patch release for that branch version. When the Kde runtime updates the Qt patch version, the branch of PySide6 should also be updated
 in the manifest file.
@@ -40,10 +41,10 @@ removes some unnecessary PySide6 binaries.
 ```yaml
 id: <your.pyside.app.id>
 runtime: org.kde.Platform
-runtime-version: '6.7'
+runtime-version: '6.8'
 sdk: org.kde.Sdk
 base: io.qt.PySide.BaseApp
-base-version: '6.7'
+base-version: '6.8'
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 modules:
