@@ -22,6 +22,7 @@ modules:
       - python3 setup.py build --qtpaths=/usr/bin/qtpaths --ignore-git --parallel=8
         --log-level=verbose --no-qt-tools --flatpak
       - python3 create_wheels.py --build-dir ./build/qfp-*-release
+      - rm -rf ./dist/PySide6_Examples*.whl
       - pip install ./dist/*.whl --prefix=${FLATPAK_DEST}
     sources:
       - type: git
