@@ -48,6 +48,11 @@ if [ -n "$BASEAPP_REMOVE_WEBENGINE" ] || [ -n "$BASEAPP_REMOVE_PYWEBENGINE" ]; t
   rm -rfv ${FLATPAK_DEST}/libexec/webenginedriver
 fi
 
+# numpy cleanup
+if [ -n "$BASEAPP_DISABLE_NUMPY" ]; then
+  pip uninstall -y numpy
+fi
+
 # webengine baseapp cleanup
 [ -r ${FLATPAK_DEST}/cleanup-BaseApp-QtWebEngine.sh ] &&
   ${FLATPAK_DEST}/cleanup-BaseApp-QtWebEngine.sh
