@@ -24,6 +24,12 @@ All PySide6 modules are available with this base app, except for the following:
 > **Note:** Each branch represents the latest patch release for that branch version. When the Kde runtime updates the Qt patch version, the branch of PySide6 should also be updated
 in the manifest file.
 
+## Environment Variables
+
+With the 6.8 branch, the following variables can reduce the application bundle size:
+- `BASEAPP_REMOVE_WEBENGINE` or `BASEAPP_REMOVE_PYWEBENGINE` to remove WebEngine components and its dependencies
+- `BASEAPP_DISABLE_NUMPY` to remove the NumPy package
+
 ## Cleanup
 
 Please make sure to clean up development files from the BaseApp, in the application
@@ -45,6 +51,10 @@ runtime-version: '6.8'
 sdk: org.kde.Sdk
 base: io.qt.PySide.BaseApp
 base-version: '6.8'
+build-options:
+  env:
+    - BASEAPP_REMOVE_WEBENGINE=1
+    - BASEAPP_DISABLE_NUMPY=1
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 modules:
