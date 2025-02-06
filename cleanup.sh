@@ -3,6 +3,13 @@
 # pyside
 rm -rfv ${FLATPAK_DEST}/bin/pyside6-*
 rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/scripts
+rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/doc
+
+# python-build
+pip uninstall -y build
+
+# python packging
+pip uninstall -y packaging
 
 # webengine cleanup based on set variables
 if [ -n "$BASEAPP_REMOVE_WEBENGINE" ] || [ -n "$BASEAPP_REMOVE_PYWEBENGINE" ]; then
@@ -22,11 +29,11 @@ if [ -n "$BASEAPP_REMOVE_WEBENGINE" ] || [ -n "$BASEAPP_REMOVE_PYWEBENGINE" ]; t
   rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/QtWebEngine{,Core,Quick,Widgets}.abi3.so
   rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/QtWebEngine{,Core,Quick,Widgets}.pyi
 
-  # qtpdf
+  # pyside qtpdf
   rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PyQt6/Qt{,Pdf,PdfWidgets}.abi3.so
   rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PyQt6/Qt{,Pdf,PdfWidgets}.pyi
 
-  # qtwebview
+  # pyside qtwebview
   rm -rfv ${FLATPAK_DEST}/qml/QtWebView
   rm -rfv ${FLATPAK_DEST}/plugins/webview
   rm -rfv ${FLATPAK_DEST}/lib/${FLATPAK_ARCH}-linux-gnu/libQt*WebView{,Quick}.so*
@@ -46,6 +53,7 @@ if [ -n "$BASEAPP_REMOVE_WEBENGINE" ] || [ -n "$BASEAPP_REMOVE_PYWEBENGINE" ]; t
   rm -rfv ${FLATPAK_DEST}/share/locale/*/qtwebengine_dictionaries
   rm -rfv ${FLATPAK_DEST}/translations/qtwebengine_locales
   rm -rfv ${FLATPAK_DEST}/libexec/webenginedriver
+  rm -rfv ${FLATPAK_DEST}/libexec/QtWebEngineProcess
 fi
 
 # numpy cleanup
