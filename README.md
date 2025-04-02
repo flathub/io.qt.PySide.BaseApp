@@ -20,6 +20,7 @@ All PySide6 modules are available with this base app, except for the following:
 |------------|------------|-------------|
 | 6.7        | Yes        | Discouraged |
 | 6.8        | Yes        |             |
+| 6.9        | Yes        |             |
 
 > **Note:** Each branch represents the latest patch release for that branch version. When the Kde runtime updates the Qt patch version, the branch of PySide6 should also be updated
 in the manifest file.
