@@ -34,16 +34,16 @@ if [ -n "$BASEAPP_REMOVE_WEBENGINE" ] || [ -n "$BASEAPP_REMOVE_PYWEBENGINE" ]; t
   rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PyQt6/Qt{,Pdf,PdfWidgets}.pyi
 
   # pyside qtwebview
-  rm -rfv ${FLATPAK_DEST}/qml/QtWebView
-  rm -rfv ${FLATPAK_DEST}/plugins/webview
+  rm -rfv ${FLATPAK_DEST}/lib/qml/QtWebView
+  rm -rfv ${FLATPAK_DEST}/lib/plugins/webview
   rm -rfv ${FLATPAK_DEST}/lib/${FLATPAK_ARCH}-linux-gnu/libQt*WebView{,Quick}.so*
-  rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PyQt6/QtWebView.abi3.so
-  rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PyQt6/QtWebView.pyi
+  rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/QtWebView.abi3.so
+  rm -rfv ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/QtWebView.pyi
 
   # qtwebengine
   rm -rfv ${FLATPAK_DEST}/bin/QtWebEngineProcess
-  rm -rfv ${FLATPAK_DEST}/plugins/imageformats
-  rm -rfv ${FLATPAK_DEST}/qml/{QtQuick/Pdf,QtWebEngine}
+  rm -rfv ${FLATPAK_DEST}/lib/plugins/imageformats
+  rm -rfv ${FLATPAK_DEST}/lib/qml/{QtQuick/Pdf,QtWebEngine}
   rm -rfv ${FLATPAK_DEST}/lib/${FLATPAK_ARCH}-linux-gnu/libQt*{Pdf{,Quick,Widgets},WebEngine{,Core,Quick{,DelegatesQml},Widgets}}.so*
   rm -fv ${FLATPAK_DEST}/lib/libQt*{Pdf{,Quick,Widgets},WebEngine{,Core,Quick{,DelegatesQml},Widgets}}.so*
   rm -rfv ${FLATPAK_DEST}/lib/libQt6WebView*.so*
@@ -52,8 +52,8 @@ if [ -n "$BASEAPP_REMOVE_WEBENGINE" ] || [ -n "$BASEAPP_REMOVE_PYWEBENGINE" ]; t
   rm -rfv ${FLATPAK_DEST}/resources/v8_context_snapshot.bin
   rm -rfv ${FLATPAK_DEST}/share/locale/*/qtwebengine_dictionaries
   rm -rfv ${FLATPAK_DEST}/translations/qtwebengine_locales
-  rm -rfv ${FLATPAK_DEST}/libexec/webenginedriver
-  rm -rfv ${FLATPAK_DEST}/libexec/QtWebEngineProcess
+  rm -rfv ${FLATPAK_DEST}/lib/libexec/webenginedriver
+  rm -rfv ${FLATPAK_DEST}/lib/libexec/QtWebEngineProcess
 fi
 
 # numpy cleanup
