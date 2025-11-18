@@ -4,15 +4,15 @@ runtime: org.kde.Platform
 runtime-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm18
+  - org.freedesktop.Sdk.Extension.llvm21
 separate-locales: false
 base: io.qt.qtwebengine.BaseApp
 base-version: '6.10'
 build-options:
-  append-path: /usr/lib/sdk/llvm18/bin
-  append-ld-library-path: /usr/lib/sdk/llvm18/lib
+  append-path: /usr/lib/sdk/llvm21/bin
+  append-ld-library-path: /usr/lib/sdk/llvm21/lib
   env:
-    LLVM_INSTALL_DIR: /usr/lib/sdk/llvm18
+    LLVM_INSTALL_DIR: /usr/lib/sdk/llvm21
     SHIBOKEN_DEBUG_LEVEL: 'full'
 modules:
   - python3-requirements.json
