@@ -22,7 +22,7 @@ modules:
       - python3 setup.py build --qtpaths=/usr/bin/qtpaths --ignore-git --parallel=8
         --log-level=verbose --flatpak
       - python3 create_wheels.py --build-dir ./build/qfp-*-release
-      - rm -rf ./dist/PySide6_Examples*.whl
+      - rm -rf ./dist/pyside6*examples*.whl
       - pip install ./dist/*.whl --prefix=${FLATPAK_DEST}
       - install -Dm755 /usr/lib/sdk/llvm21/lib/libLLVM.so.21.1 ${FLATPAK_DEST}/lib/
       - install -Dm755 /usr/lib/sdk/llvm21/lib/libclang-cpp.so.21.1 ${FLATPAK_DEST}/lib/
@@ -33,6 +33,8 @@ modules:
       - ln -s libclang-cpp.so.21.1 ${FLATPAK_DEST}/lib/libclang-cpp.so
       - ln -s libclang.so.21.1 ${FLATPAK_DEST}/lib/libclang.so.21
       - ln -s libclang.so.21.1 ${FLATPAK_DEST}/lib/libclang.so
+      - rm -rf ${FLATPAK_DEST}/lib/python*/site-packages/PySide6/examples
+      - rm -rf ${FLATPAK_DEST}/lib/python*/site-packages/pyside6_examples-*.dist-info
     sources:
       - type: git
         url: "https://code.qt.io/pyside/pyside-setup.git"
