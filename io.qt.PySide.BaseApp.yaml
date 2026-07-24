@@ -1,13 +1,13 @@
 id: io.qt.PySide.BaseApp
-branch: '6.10'
+branch: '6.11'
 runtime: org.kde.Platform
-runtime-version: '6.10'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm21
 separate-locales: false
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.10'
+base-version: '6.11'
 build-options:
   append-path: /usr/lib/sdk/llvm21/bin
   append-ld-library-path: /usr/lib/sdk/llvm21/lib
@@ -38,8 +38,8 @@ modules:
     sources:
       - type: git
         url: "https://code.qt.io/pyside/pyside-setup.git"
-        tag: "v6.10.3"
-        commit: "863e6b6e6269fbd401db06e2066119b9014fcf0d"
+        tag: "v6.11.1"
+        commit: 73fb12a067c2e8f7a464a310aaee2860fa2b64d2
   - name: polish
     buildsystem: simple
     build-commands:
