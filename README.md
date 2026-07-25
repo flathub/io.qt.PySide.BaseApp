@@ -18,10 +18,11 @@ All PySide6 modules are available with this base app, except for the following:
 
 | Branch     | Maintained | Note        |
 |------------|------------|-------------|
-| 6.7        | Yes        | Discouraged |
-| 6.8        | Yes        |             |
+| 6.7        | Yes        | EOL         |
+| 6.8        | Yes        | EOL         |
 | 6.9        | Yes        |             |
 | 6.10       | Yes        |             |
+| 6.11       | Yes        |             |
 
 > **Note:** Each branch represents the latest patch release for that branch version. When the Kde runtime updates the Qt patch version, the branch of PySide6 should also be updated
 in the manifest file.
@@ -49,10 +50,10 @@ removes some unnecessary PySide6 binaries.
 ```yaml
 id: <your.pyside.app.id>
 runtime: org.kde.Platform
-runtime-version: '6.8'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 base: io.qt.PySide.BaseApp
-base-version: '6.8'
+base-version: '6.11'
 build-options:
   env:
     - BASEAPP_REMOVE_WEBENGINE=1
