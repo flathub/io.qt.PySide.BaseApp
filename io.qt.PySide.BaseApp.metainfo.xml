@@ -10,8 +10,8 @@
         <name>The Qt Company</name>
     </developer>
   <releases>
-    <release version="6.11.1" date="2026-04-28">
-        <url type="details">https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs/changes-6.11.1</url>
+    <release version="6.11.2" date="2026-08-18">
+        <url type="details">https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs/changes-6.11.2</url>
     </release>
   </releases>
 </component>
