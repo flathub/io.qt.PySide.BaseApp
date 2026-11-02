@@ -38,8 +38,8 @@ modules:
     sources:
       - type: git
         url: "https://code.qt.io/pyside/pyside-setup.git"
-        tag: "v6.11.2"
-        commit: 24627cd36e1593adf22eb1f2950e4248e7bcc1ec
+        tag: "v6.11.3"
+        commit: c76f06aa6ca36abbccdf211c6ea24c34d71ee43f
   - name: polish
     buildsystem: simple
     build-commands:
